@@ -5,7 +5,7 @@ Student Rest CRUD App
 ```
 localhost:8080/api/students
 ```
-Input JSON
+**Request Body**
 ```
 {
     "name": "Ashok Kumar",
@@ -23,8 +23,14 @@ Input JSON
 }
 ```
 
-## Create Student
+## Get All Students
 **GET Request**
 ```
 localhost:8080/api/students
+```
+
+## Get Students by name
+**GET Request**
+```
+http://localhost:8080/api/students/Ashok%20Kumar
 ```

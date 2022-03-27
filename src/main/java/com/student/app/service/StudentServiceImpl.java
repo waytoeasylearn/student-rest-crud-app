@@ -7,11 +7,16 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.student.app.exception.StudentNotfoundException;
 import com.student.app.model.Student;
 import com.student.app.model.Subject;
 import com.student.app.repository.StudentRepository;
 import com.student.app.repository.SubjectRepository;
-
+/**
+ * 
+ * @author ashok.mariyala
+ *
+ */
 @Service
 public class StudentServiceImpl implements StudentService {
 	@Autowired
@@ -22,7 +27,11 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public List<Student> getAllStudents() {
-		return studentRepository.findAll();
+		List<Student> studentList = studentRepository.findAll();
+		if(null == studentList || studentList.isEmpty()) {
+			throw new StudentNotfoundException("No students found in database. Nothing to display");
+		}
+		return studentList;
 	}
 
 	@Override
@@ -30,13 +39,18 @@ public class StudentServiceImpl implements StudentService {
 		Optional<Student> studentDetails = studentRepository.findById(studentId);
 		if (studentDetails.isPresent()) {
 			return studentDetails.get();
+		} else {
+			throw new StudentNotfoundException("No student found with given student id. Nothing to display");
 		}
-		return null;
 	}
 
 	@Override
 	public List<Student> findStudentByName(String studentName) {
-		return studentRepository.findStudentByName(studentName);
+		List<Student> studentList = studentRepository.findStudentByName(studentName);
+		if(null == studentList || studentList.isEmpty()) {
+			throw new StudentNotfoundException("No student found with given student name. Nothing to display");
+		}
+		return studentList;
 	}
 
 	@Override
@@ -94,7 +108,7 @@ public class StudentServiceImpl implements StudentService {
 
 			return studentRepository.save(studentObj);
 		} else {
-			return null;
+			throw new StudentNotfoundException("No student found with given student id. Hence unable to update student");
 		}
 	}
 

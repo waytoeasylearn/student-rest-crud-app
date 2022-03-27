@@ -20,6 +20,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.student.app.model.Student;
 import com.student.app.service.StudentServiceImpl;
 
+/**
+ * 
+ * @author ashok.mariyala
+ *
+ */
 @RestController
 @RequestMapping("/api")
 public class StudentController {

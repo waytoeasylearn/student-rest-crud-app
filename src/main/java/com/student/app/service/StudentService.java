@@ -5,7 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.student.app.model.Student;
-
+/**
+ * 
+ * @author ashok.mariyala
+ *
+ */
 @Service
 public interface StudentService {
 	public abstract Student findStudentById(Long studentId);

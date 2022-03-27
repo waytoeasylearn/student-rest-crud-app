@@ -14,7 +14,11 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+/**
+ * 
+ * @author ashok.mariyala
+ *
+ */
 @Entity
 @Table(name = "student")
 public class Student {

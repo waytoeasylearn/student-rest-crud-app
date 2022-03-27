@@ -7,7 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
+/**
+ * 
+ * @author ashok.mariyala
+ *
+ */
 @Entity
 @Table(name = "subject")
 public class Subject {

@@ -34,3 +34,13 @@ localhost:8080/api/students
 ```
 http://localhost:8080/api/students/Ashok%20Kumar
 ```
+## Get Students whose marks greater than given marks
+**GET Request**
+```
+http://localhost:8080/api/students/totalmarks?gt=130
+```
+## Get Students by class name
+**GET Request**
+```
+localhost:8080/api/students/class?class=10th
+```

@@ -15,7 +15,7 @@ public class Subject {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sub_seq")
 	@SequenceGenerator(initialValue = 100, name = "sub_seq", sequenceName = "subject_seq")
 	@Column(name = "subject_id")
-	private Long subjectId;
+	private Long id;
 
 	@Column(name = "subject_name")
 	private String name;
@@ -31,12 +31,12 @@ public class Subject {
 		this.marks = marks;
 	}
 
-	public Long getSubjectId() {
-		return subjectId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setSubjectId(Long subjectId) {
-		this.subjectId = subjectId;
+	public void setSubjectId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -57,6 +57,6 @@ public class Subject {
 
 	@Override
 	public String toString() {
-		return "Subject [subjectId=" + subjectId + ", name=" + name + ", marks=" + marks + "]";
+		return "Subject [subjectId=" + id + ", name=" + name + ", marks=" + marks + "]";
 	}
 }

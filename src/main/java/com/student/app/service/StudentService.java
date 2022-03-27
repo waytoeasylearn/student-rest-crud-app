@@ -8,11 +8,12 @@ import com.student.app.model.Student;
 
 @Service
 public interface StudentService {
-	Student findStudentById(Long studentId);
-	List<Student> getAllStudents();
-	List<Student> findStudentByName(String studentName);
-	List<Student> findStudentsByMarks(int marks);
-	Student addStudent(Student student);
-	Student updateStudent(Student student, Long studentId);
-	void deleteStudent(Student student);
+	public abstract Student findStudentById(Long studentId);
+	public abstract List<Student> getAllStudents();
+	public abstract List<Student> findStudentByName(String studentName);
+	public abstract List<Student> findStudentsByClass(String clazz);
+	public abstract List<Student> findStudentsByMarksGreaterThanGiven(int marks);
+	public abstract Student addStudent(Student student);
+	public abstract Student updateStudent(Student student, Long studentId);
+	public abstract void deleteStudent(Student student);
 }

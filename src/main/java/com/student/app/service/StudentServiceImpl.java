@@ -40,8 +40,14 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public List<Student> findStudentsByMarks(int marks) {
+	public List<Student> findStudentsByMarksGreaterThanGiven(int marks) {
 		return studentRepository.findAll().stream().filter(student -> student.getTotalMarks() >= marks)
+				.collect(Collectors.toList());
+	}
+	
+	@Override
+	public List<Student> findStudentsByClass(String clazz) {
+		return studentRepository.findAll().stream().filter(student -> student.getClazz().equalsIgnoreCase(clazz))
 				.collect(Collectors.toList());
 	}
 
@@ -72,7 +78,7 @@ public class StudentServiceImpl implements StudentService {
 			studentObj.setTotalMarks(totalMarks);
 
 			for (Subject subject : student.getSubjects()) {
-				Optional<Subject> dbSubjectDetails = subjectRepository.findById(subject.getSubjectId());
+				Optional<Subject> dbSubjectDetails = subjectRepository.findById(subject.getId());
 				Subject savingObject;
 				if (dbSubjectDetails.isPresent()) {
 					savingObject = dbSubjectDetails.get();
@@ -80,7 +86,7 @@ public class StudentServiceImpl implements StudentService {
 					savingObject.setName(subject.getName());
 				} else {
 					savingObject = new Subject(subject.getName(), subject.getMarks());
-					savingObject.setSubjectId(subject.getSubjectId());
+					savingObject.setSubjectId(subject.getId());
 				}
 				subjectRepository.save(subject);
 			}

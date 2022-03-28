@@ -83,13 +83,12 @@ public class StudentController {
 
 			return new ResponseEntity<>(location, HttpStatus.CREATED);
 		} catch (Exception e) {
-			e.printStackTrace();
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
 	@PutMapping("/students/{id}")
-	public ResponseEntity<?> updateEmployee(@PathVariable(value = "id") Long studentId, @RequestBody Student student) {
+	public ResponseEntity<?> updateStudent(@PathVariable(value = "id") Long studentId, @RequestBody Student student) {
 		Student updatedStudent = studentService.updateStudent(student, studentId);
 		if (null != updatedStudent) {
 			URI location = ServletUriComponentsBuilder.fromCurrentRequest().replacePath("/api/students/{name}")
@@ -102,7 +101,7 @@ public class StudentController {
 	}
 
 	@DeleteMapping("/students/{id}")
-	public ResponseEntity<?> deleteEmployee(@PathVariable(value = "id") Long studentId) {
+	public ResponseEntity<?> deleteStudent(@PathVariable(value = "id") Long studentId) {
 
 		Student student = studentService.findStudentById(studentId);
 		if (null != student) {
